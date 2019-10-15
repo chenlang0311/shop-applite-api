@@ -1,0 +1,15 @@
+language: node_js
+node_js:
+  - "10"
+services:
+  - docker
+
+before_install:
+  - npm install
+before_script:
+  - npm install -g gulp
+script:
+  - gulp
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - docker build -t 1025518502/shop-applite-api:latest .
+  - docker push 1025518502/shop-applite-api:latest

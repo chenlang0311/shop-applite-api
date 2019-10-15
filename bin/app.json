@@ -1,0 +1,16 @@
+{
+    apps: [
+        {
+            name: "app",
+            max_memory_restart: "500M",
+            script: "/data/build/app.js",
+            out_file: "/data/pm2_logs/out.log",
+            error_file: "/data/pm2_logs/error.log",
+            instances: 1,
+            exec_mode: "cluster",
+            env: {
+                NODE_ENV: "production"
+            }
+        }
+    ]
+}

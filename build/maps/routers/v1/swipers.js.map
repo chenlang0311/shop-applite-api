@@ -1,0 +1,1 @@
+{"version":3,"sources":["../ts/routers/v1/swipers.ts"],"names":[],"mappings":";;AAAA,qCAAiC;AACjC,qDAAqD;AACrD,mDAA4C;AAC5C,MAAM,CAAC,GAAG,gBAAM,EAAE,CAAC;AACnB,MAAM,MAAM,GAAG,IAAI,0BAAa,CAAC,CAAC,CAAC,CAAC,OAAO,CAAC;AAE5C,MAAM,CAAC,GAAG,CAAC,OAAO,EAAE,qBAAO,CAAC,cAAc,CAAC,CAAC;AAE5C,kBAAe,CAAC,CAAC","file":"../../../routers/v1/swipers.js","sourceRoot":"../../../maps"}
