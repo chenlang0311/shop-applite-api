@@ -1,5 +1,4 @@
 FROM node:10
-MAINTAINER 1025518502 <chenlang0311@gmail.com>
 
 # Install global pm2 
 RUN npm install pm2 -g --registry=https://registry.npm.taobao.org
