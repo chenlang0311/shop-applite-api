@@ -17,6 +17,7 @@ async function set(key, value, expire) {
     }
     catch (e) {
         logger.error(`redis set error : ${e}`);
+        return false;
     }
 }
 exports.set = set;
@@ -230,5 +231,4 @@ async function llen(key) {
     return null;
 }
 exports.llen = llen;
-
-//# sourceMappingURL=../maps/lib/redisclient.js.map
+//# sourceMappingURL=redisclient.js.map

@@ -46,5 +46,4 @@ function wxXmlReply(status, msg = 'fails') {
     return utils.obj2Xml({ return_code: 'FAIL', return_msg: msg });
 }
 exports.wxXmlReply = wxXmlReply;
-
-//# sourceMappingURL=../maps/lib/wxutils.js.map
+//# sourceMappingURL=wxutils.js.map

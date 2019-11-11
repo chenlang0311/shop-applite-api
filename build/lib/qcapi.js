@@ -30,5 +30,4 @@ class Qcapi {
     }
 }
 exports.Qcapi = Qcapi;
-
-//# sourceMappingURL=../maps/lib/qcapi.js.map
+//# sourceMappingURL=qcapi.js.map

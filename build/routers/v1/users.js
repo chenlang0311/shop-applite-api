@@ -15,5 +15,4 @@ router.get('/classes', jwt_1.checkLogin, controllers_1.Users.findUserClassList);
 router.post('/dailysign', jwt_1.checkLogin, controllers_1.Users.dailySign); // 日常签到
 router.post('/exchange-goods', jwt_1.checkLogin, controllers_1.Users.exchangeGoods); // 兑换商品
 exports.default = r;
-
-//# sourceMappingURL=../../maps/routers/v1/users.js.map
+//# sourceMappingURL=users.js.map

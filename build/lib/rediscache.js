@@ -68,5 +68,4 @@ async function delRedisCache(key, keyPre) {
     return await redis.del(redisKey);
 }
 exports.delRedisCache = delRedisCache;
-
-//# sourceMappingURL=../maps/lib/rediscache.js.map
+//# sourceMappingURL=rediscache.js.map

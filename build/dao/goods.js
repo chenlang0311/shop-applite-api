@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+//import * as sequelize from 'sequelize';
 const base_1 = require("./base");
 class Dao extends base_1.DaoBase {
     constructor(seqz, modelName) {
@@ -21,5 +22,4 @@ class Dao extends base_1.DaoBase {
 }
 Dao.tableName = 'goods';
 exports.GoodsDao = Dao;
-
-//# sourceMappingURL=../maps/dao/goods.js.map
+//# sourceMappingURL=goods.js.map

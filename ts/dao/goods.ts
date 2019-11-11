@@ -1,5 +1,5 @@
 import { Sequelize } from 'sequelize';
-import * as sequelize from 'sequelize';
+//import * as sequelize from 'sequelize';
 import { DaoBase, SeqzDao } from './base';
 
 class Dao extends DaoBase {

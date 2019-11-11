@@ -14,5 +14,4 @@ const Swipers = require("./swipers");
 exports.Swipers = Swipers;
 const Goods = require("./goods");
 exports.Goods = Goods;
-
-//# sourceMappingURL=../maps/controllers/index.js.map
+//# sourceMappingURL=index.js.map

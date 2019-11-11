@@ -30,5 +30,4 @@ class Dao extends base_1.DaoBase {
 }
 Dao.tableName = 'catalogs';
 exports.CatalogsDao = Dao;
-
-//# sourceMappingURL=../maps/dao/catalogs.js.map
+//# sourceMappingURL=catalogs.js.map

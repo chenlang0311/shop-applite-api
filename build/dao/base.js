@@ -43,5 +43,4 @@ class DaoBase {
     }
 }
 exports.DaoBase = DaoBase;
-
-//# sourceMappingURL=../maps/dao/base.js.map
+//# sourceMappingURL=base.js.map

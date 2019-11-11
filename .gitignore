@@ -12,6 +12,7 @@ pids
 logs
 results
 tmp
+build
 
 # Optional npm cache directory
 .npm
@@ -21,7 +22,6 @@ tmp
 
 # Dependency directory
 */node_modules
-
 # Editors
 .idea
 .vscode
@@ -45,3 +45,4 @@ Thumbs.db
 .Trashes
 .VolumeIcon.icns
 .com.apple.timemachine.donotpresent
+node_modules

@@ -21,5 +21,4 @@ class Dao extends base_1.DaoBase {
 }
 Dao.tableName = 'swipers';
 exports.SwipersDao = Dao;
-
-//# sourceMappingURL=../maps/dao/swipers.js.map
+//# sourceMappingURL=swipers.js.map

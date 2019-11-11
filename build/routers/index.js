@@ -17,5 +17,4 @@ function routers(app) {
     app.use('/api/v1/goods', goods_1.default);
 }
 exports.routers = routers;
-
-//# sourceMappingURL=../maps/routers/index.js.map
+//# sourceMappingURL=index.js.map

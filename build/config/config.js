@@ -143,5 +143,4 @@ exports.config = {
         catalogLockedExpire: 3600
     }
 };
-
-//# sourceMappingURL=../maps/config/config.js.map
+//# sourceMappingURL=config.js.map

@@ -9,5 +9,4 @@ const router = new routerbase_1.routerHandler(r).handler;
 router.get('/list', controllers_1.Goods.findClassList); // 课程列表
 router.get('/details/:id', controllers_1.Goods.findClassDetails); // 课程详情
 exports.default = r;
-
-//# sourceMappingURL=../../maps/routers/v1/goods.js.map
+//# sourceMappingURL=goods.js.map

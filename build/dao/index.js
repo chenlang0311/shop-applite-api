@@ -61,5 +61,4 @@ function initDao() {
     return initInstance;
 }
 exports.initDao = initDao;
-
-//# sourceMappingURL=../maps/dao/index.js.map
+//# sourceMappingURL=index.js.map

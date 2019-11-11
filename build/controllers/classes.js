@@ -113,5 +113,4 @@ async function findClassDetails(req, res, next) {
     return res.sendOk(results);
 }
 exports.findClassDetails = findClassDetails;
-
-//# sourceMappingURL=../maps/controllers/classes.js.map
+//# sourceMappingURL=classes.js.map

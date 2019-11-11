@@ -17,6 +17,8 @@ export async function set(key: string, value: string, expire? : number) {
         }
     } catch (e) {
         logger.error(`redis set error : ${e}`);
+        return false;
+        
     }
 }
 

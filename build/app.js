@@ -65,5 +65,4 @@ app.use(function (err, req, res, next) {
 schedule.init();
 process.on("uncaughtException", (err) => logger.error("uncaughtException", err.stack));
 app.listen(config_1.config.port, () => logger.info(`service start sucess and listening on port ${config_1.config.port}...`));
-
-//# sourceMappingURL=maps/app.js.map
+//# sourceMappingURL=app.js.map

@@ -11,5 +11,4 @@ router.post('/wxpay', jwt_1.checkLogin, validator_1.validate, controllers_1.Pays
 router.post('/wxpay/notify', controllers_1.Pays.wxNotify); // 微信回调
 router.post('/order/notify', controllers_1.Pays.orderNotify); // 支付完成后，订单完成通知
 exports.default = r;
-
-//# sourceMappingURL=../../maps/routers/v1/pays.js.map
+//# sourceMappingURL=pays.js.map

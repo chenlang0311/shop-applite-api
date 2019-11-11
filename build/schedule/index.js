@@ -31,5 +31,4 @@ async function syncCatalogReads() {
         }
     });
 }
-
-//# sourceMappingURL=../maps/schedule/index.js.map
+//# sourceMappingURL=index.js.map

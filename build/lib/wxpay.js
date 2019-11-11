@@ -219,5 +219,4 @@ class WXPay {
     }
 }
 exports.WXPay = WXPay;
-
-//# sourceMappingURL=../maps/lib/wxpay.js.map
+//# sourceMappingURL=wxpay.js.map

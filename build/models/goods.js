@@ -45,5 +45,4 @@ module.exports = function (sequelize, DataTypes) {
         tableName: tableName
     });
 };
-
-//# sourceMappingURL=../maps/models/goods.js.map
+//# sourceMappingURL=goods.js.map

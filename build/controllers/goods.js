@@ -36,7 +36,7 @@ async function findClassList(req, res, next) {
             { author_abstract: { $like: `%${search}%` } }
         ];
     }
-    let results = await ClassesDao.getInstance().findClassList(options);
+    let results = await dao_1.ClassesDao.getInstance().findClassList(options);
     if (!results)
         return res.sendErr('获取列表失败！');
     let data = results.rows.map(r => {
@@ -73,7 +73,7 @@ async function findClassDetails(req, res, next) {
         if (record)
             locked = false;
     }
-    let results = await ClassesDao.getInstance().findClassDetails(id);
+    let results = await dao_1.ClassesDao.getInstance().findClassDetails(id);
     if (!results)
         return res.sendErr('获取详情失败');
     if (results.state !== 'normal')
@@ -115,5 +115,4 @@ async function findClassDetails(req, res, next) {
     return res.sendOk(results);
 }
 exports.findClassDetails = findClassDetails;
-
-//# sourceMappingURL=../maps/controllers/goods.js.map
+//# sourceMappingURL=goods.js.map

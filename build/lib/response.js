@@ -51,5 +51,4 @@ class ReqError extends Error {
     }
 }
 exports.ReqError = ReqError;
-
-//# sourceMappingURL=../maps/lib/response.js.map
+//# sourceMappingURL=response.js.map

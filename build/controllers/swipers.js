@@ -32,5 +32,4 @@ async function findSwiperList(req, res, next) {
     return res.sendOk(results);
 }
 exports.findSwiperList = findSwiperList;
-
-//# sourceMappingURL=../maps/controllers/swipers.js.map
+//# sourceMappingURL=swipers.js.map

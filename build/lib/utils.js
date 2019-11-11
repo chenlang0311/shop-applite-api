@@ -243,5 +243,4 @@ function picReplaceUrl(url, hostPath) {
     return `${hostPath}${url}`;
 }
 exports.picReplaceUrl = picReplaceUrl;
-
-//# sourceMappingURL=../maps/lib/utils.js.map
+//# sourceMappingURL=utils.js.map
