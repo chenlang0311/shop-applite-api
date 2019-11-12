@@ -12,7 +12,6 @@ pids
 logs
 results
 tmp
-build
 
 # Optional npm cache directory
 .npm
@@ -24,11 +23,10 @@ build
 */node_modules
 # Editors
 .idea
-.vscode
 *.iml
 modules.xml
 *.ipr
-build
+
 # Folder config file
 Desktop.ini
 
@@ -46,3 +44,4 @@ Thumbs.db
 .VolumeIcon.icns
 .com.apple.timemachine.donotpresent
 node_modules
+build

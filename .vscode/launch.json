@@ -1,0 +1,40 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "api启动程序",
+            "cwd": "${workspaceRoot}",
+            "program": "${workspaceRoot}/build/app.js",
+            "env": {
+                "NODE_ENV": "development"
+            },
+            "sourceMaps": true,
+            "outFiles": [
+                "${workspaceRoot}/build/**/*"
+            ],
+            "console": "integratedTerminal",
+            "args": [
+                "--inspect"
+            ]
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "gulp程序",
+            "program": "${workspaceRoot}/node_modules/gulp/bin/gulp.js",
+            "args": [
+                "default"
+            ]
+        },
+        {
+            "type": "node",
+            "request": "attach", // attach表示监听某一端口进行调试
+            "name": "附加到进程",
+            "address": "localhost",
+            "port": 5858, // 要监听的端口
+            "outFiles": []
+        }
+    ]
+}
