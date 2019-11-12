@@ -17,6 +17,13 @@ npm install
 npm install --registry=https://registry.npm.taobao.org
 
 # 启动服务
+# 需要先安装Redis服务，并且启动
+# 如果是用vscode 可以直接 ctrl+shift+b 等待gulp任务完成 然后F5开启调试
+# 其他编辑器可以先执行 gulp  然后node build/app.js
 
-
+#如果服务启动成功
+service start sucess and listening on port 8010...
 ```
+
+## 修改配置
+ 在ts/config/config.ts可以修改MySQL，Redis等配置，修改配置后需要重新启动服务
