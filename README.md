@@ -8,7 +8,7 @@
 git clone https://github.com/chenlang0311/shop-applite-api.git
 
 # 进入项目目录
-cd vue-element-admin
+cd shop-applite-api
 
 # 安装依赖
 npm install
@@ -17,7 +17,6 @@ npm install
 npm install --registry=https://registry.npm.taobao.org
 
 # 启动服务
-npm run dev
-```
 
-浏览器访问 http://localhost:8010
+
+```
