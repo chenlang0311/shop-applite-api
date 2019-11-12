@@ -284,4 +284,5 @@ async function exchangeGoods(req, res, next) {
     }
 }
 exports.exchangeGoods = exchangeGoods;
-//# sourceMappingURL=users.js.map
+
+//# sourceMappingURL=../maps/controllers/users.js.map

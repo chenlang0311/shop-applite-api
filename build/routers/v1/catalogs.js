@@ -8,4 +8,5 @@ const router = new routerbase_1.routerHandler(r).handler;
 router.get('/details/:id', controllers_1.Catalogs.findCatalogDetails);
 router.get('/count/:id', controllers_1.Catalogs.updateCatalogCount);
 exports.default = r;
-//# sourceMappingURL=catalogs.js.map
+
+//# sourceMappingURL=../../maps/routers/v1/catalogs.js.map

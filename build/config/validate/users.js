@@ -8,4 +8,5 @@ exports.users = {
         rds_session_key: { notEmpty: true, errorMessage: '请求异常，参数缺失' }
     }
 };
-//# sourceMappingURL=users.js.map
+
+//# sourceMappingURL=../../maps/config/validate/users.js.map

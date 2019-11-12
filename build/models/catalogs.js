@@ -88,4 +88,5 @@ module.exports = function (sequelize, DataTypes) {
         tableName: tableName
     });
 };
-//# sourceMappingURL=catalogs.js.map
+
+//# sourceMappingURL=../maps/models/catalogs.js.map

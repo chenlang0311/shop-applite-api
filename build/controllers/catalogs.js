@@ -51,4 +51,5 @@ async function updateCatalogCount(req, res, next) {
     return res.sendOk();
 }
 exports.updateCatalogCount = updateCatalogCount;
-//# sourceMappingURL=catalogs.js.map
+
+//# sourceMappingURL=../maps/controllers/catalogs.js.map

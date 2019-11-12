@@ -102,4 +102,5 @@ class myHttpRequest {
     }
 }
 exports.myHttpRequest = myHttpRequest;
-//# sourceMappingURL=http.js.map
+
+//# sourceMappingURL=../maps/lib/http.js.map

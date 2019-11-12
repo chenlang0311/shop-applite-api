@@ -12,4 +12,5 @@
  */
 // router.get('/getkeyurl', Vods.getKeyUrl); // 弃用，小程序背景音乐不支持hls加密音频
 // export default r;
-//# sourceMappingURL=vods.js.map
+
+//# sourceMappingURL=../../maps/routers/v1/vods.js.map

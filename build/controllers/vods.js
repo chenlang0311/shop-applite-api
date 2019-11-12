@@ -47,4 +47,5 @@ async function getKeyUrl(req, res, next) {
     return res.send();
 }
 exports.getKeyUrl = getKeyUrl;
-//# sourceMappingURL=vods.js.map
+
+//# sourceMappingURL=../maps/controllers/vods.js.map

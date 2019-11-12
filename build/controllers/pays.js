@@ -103,4 +103,5 @@ async function wxNotify(req, res, next) {
     return res.send(wxutils.wxXmlReply(true));
 }
 exports.wxNotify = wxNotify;
-//# sourceMappingURL=pays.js.map
+
+//# sourceMappingURL=../maps/controllers/pays.js.map

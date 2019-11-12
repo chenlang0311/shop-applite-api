@@ -115,4 +115,5 @@ async function findClassDetails(req, res, next) {
     return res.sendOk(results);
 }
 exports.findClassDetails = findClassDetails;
-//# sourceMappingURL=goods.js.map
+
+//# sourceMappingURL=../maps/controllers/goods.js.map

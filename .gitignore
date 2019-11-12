@@ -28,7 +28,7 @@ build
 *.iml
 modules.xml
 *.ipr
-
+build
 # Folder config file
 Desktop.ini
 

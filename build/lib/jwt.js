@@ -76,4 +76,5 @@ function checkLogin(req, res, next) {
     return next();
 }
 exports.checkLogin = checkLogin;
-//# sourceMappingURL=jwt.js.map
+
+//# sourceMappingURL=../maps/lib/jwt.js.map

@@ -56,4 +56,5 @@ function config(logdir = 'logs') {
     };
 }
 exports.config = config;
-//# sourceMappingURL=winston.js.map
+
+//# sourceMappingURL=../maps/config/winston.js.map

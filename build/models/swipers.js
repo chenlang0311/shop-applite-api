@@ -65,4 +65,5 @@ module.exports = function (sequelize, DataTypes) {
         tableName: tableName
     });
 };
-//# sourceMappingURL=swipers.js.map
+
+//# sourceMappingURL=../maps/models/swipers.js.map

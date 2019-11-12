@@ -30,4 +30,5 @@ class routerHandler {
     }
 }
 exports.routerHandler = routerHandler;
-//# sourceMappingURL=routerbase.js.map
+
+//# sourceMappingURL=../maps/lib/routerbase.js.map
