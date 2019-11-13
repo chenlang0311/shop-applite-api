@@ -5,7 +5,7 @@ import { Goods } from '../../controllers';
 const r = Router();
 const router = new routerHandler(r).handler;
 
-router.get('/list', Goods.findClassList); // 课程列表
-router.get('/details/:id', Goods.findClassDetails); // 课程详情
+router.get('/list', Goods.findGoodsList); // 课程列表
+router.get('/details/:id', Goods.findGoodsDetail); // 课程详情
 
 export default r;

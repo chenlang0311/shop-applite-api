@@ -1,12 +1,12 @@
 import { Request, Response, NextFunction } from 'express';
 import * as utils from '../lib/utils';
-import { RecordsDao,ClassesDao } from '../dao';
+import { RecordsDao,ClassesDao,GoodsDao } from '../dao';
 import * as wxutils from '../lib/wxutils';
 import { config } from '../config/config';
 import * as rediscache from '../lib/rediscache';
 
-export async function findClassList(req: Request, res: Response, next: NextFunction) {
-    return res.sendOk()
+export async function findGoodsList(req: Request, res: Response, next: NextFunction) {
+    // return res.sendOk()
     let { page, count, category_id, order_by, order_sort, search } = req.query;
     let { offset, limit } = utils.getPageCount(page, count);
     let redisKey = { offset, limit, category_id, order_by, order_sort, search }
@@ -24,19 +24,19 @@ export async function findClassList(req: Request, res: Response, next: NextFunct
         order: [['unlocks', 'desc']]
     };
 
-    if (category_id && category_id != '0') options.where.category_id = category_id;
-    if (order_by && order_sort) options.order = [[`${order_by}`, `${order_sort}`]];
-    if (search && search !== '') {
-        search = utils.trim(search);
-        options.where.$or = [
-            { title: { $like: `%${search}%` } },
-            { abstract: { $like: `%${search}%` } },
-            { author: { $like: `%${search}%` } },
-            { author_abstract: { $like: `%${search}%` } }
-        ];
-    }
+    // if (category_id && category_id != '0') options.where.category_id = category_id;
+    // if (order_by && order_sort) options.order = [[`${order_by}`, `${order_sort}`]];
+    // if (search && search !== '') {
+    //     search = utils.trim(search);
+    //     options.where.$or = [
+    //         { title: { $like: `%${search}%` } },
+    //         { abstract: { $like: `%${search}%` } },
+    //         { author: { $like: `%${search}%` } },
+    //         { author_abstract: { $like: `%${search}%` } }
+    //     ];
+    // }
 
-    let results = await ClassesDao.getInstance().findClassList(options);
+    let results = await GoodsDao.getInstance().findGoodsList(options);
     if (!results) return res.sendErr('获取列表失败！');
 
     let data = results.rows.map(r => {
@@ -61,8 +61,8 @@ export async function findClassList(req: Request, res: Response, next: NextFunct
     rediscache.setRedisCacheAboutReq(req, redisKey, { count: results.count, rows: data });
     return res.sendOk(data);
 }
-export async function findClassDetails(req: Request, res: Response, next: NextFunction) {
-    return res.sendOk()
+export async function findGoodsDetail(req: Request, res: Response, next: NextFunction) {
+    // return res.sendOk()
     let locked = true;
     let { id } = req.params;
     let user_id = req.jwtAccessToken ? req.jwtAccessToken.sub : null;
@@ -71,7 +71,7 @@ export async function findClassDetails(req: Request, res: Response, next: NextFu
         if (record) locked = false;
     }
 
-    let results = await ClassesDao.getInstance().findClassDetails(id);
+    let results = await GoodsDao.getInstance().findGoodsDetail(id);
     if (!results) return res.sendErr('获取详情失败');
     if (results.state !== 'normal') return res.sendErr('该课程已下架');
 
