@@ -27,5 +27,6 @@ service start sucess and listening on port 8010...
 ```
 ## 配置
 在ts/config/config.ts中配置MySQL，Redis,项目端口号，JWT等等
+在ts/config/winston.ts中配置日志信息
 ## 修改配置
 在ts/config/config.ts可以修改MySQL，Redis等配置，修改配置后需要重新启动服务
