@@ -23,7 +23,9 @@ npm install --registry=https://registry.npm.taobao.org
 
 #如果服务启动成功
 service start sucess and listening on port 8010...
-```
 
+```
+## 配置
+在ts/config/config.ts中配置MySQL，Redis,项目端口号，JWT等等
 ## 修改配置
- 在ts/config/config.ts可以修改MySQL，Redis等配置，修改配置后需要重新启动服务
+在ts/config/config.ts可以修改MySQL，Redis等配置，修改配置后需要重新启动服务
