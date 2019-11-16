@@ -5,7 +5,7 @@ import catalogsRouterV1 from './v1/catalogs';
 // import vodsRouterV1 from './v1/vods';
 import paysRouterV1 from './v1/pays';
 import swipersRouterV1 from './v1/swipers';
-import goodssRouterV1 from './v1/goods';
+import goodsRouterV1 from './v1/goods';
 
 export function routers(app: Application) {
 	app.use('/api/v1/users', usersRouterV1);
@@ -14,6 +14,5 @@ export function routers(app: Application) {
 	// app.use('/api/v1/vod', vodsRouterV1);
 	app.use('/api/v1/pays', paysRouterV1);
 	app.use('/api/v1/swipers', swipersRouterV1);
-	app.use('/api/v1/goods', goodssRouterV1);
-	
+	app.use('/api/v1/goods', goodsRouterV1);
 }
