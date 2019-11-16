@@ -10,6 +10,7 @@ import { RecordsDao } from './records';
 import { SwipersDao } from './swipers';
 import { OrdersDao } from './orders';
 import { GoodsDao } from './goods';
+import { SignDao } from './sign';
 
 function initInstance() {
     const seqz = SeqzDao.getInstance();
@@ -20,6 +21,7 @@ function initInstance() {
     CategoriesDao.getInstance(seqz);
     ClassesDao.getInstance(seqz);
     GoodsDao.getInstance(seqz);
+    SignDao.getInstance(seqz);
     DetailsDao.getInstance(seqz);
     PayLogsDao.getInstance(seqz);
     RecordsDao.getInstance(seqz);
@@ -44,6 +46,7 @@ function initDao() {
     seqz.import('../models/swipers');
     seqz.import('../models/orders');
     seqz.import('../models/goods');
+    seqz.import('../models/sign');
     Classes.hasMany(Catalogs, { foreignKey: 'class_id', as: 'catalogs' });
     Classes.hasOne(Details, { foreignKey: 'class_id', as: 'details' });
     Records.belongsTo(Classes, { foreignKey: 'class_id', as: 'classes' });

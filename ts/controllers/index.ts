@@ -5,6 +5,7 @@ import * as Vods from './vods';
 import * as Pays from './pays';
 import * as Swipers from './swipers';
 import * as Goods from './goods';
+import * as Sign from './sign';
 
 export {
     Users,
@@ -13,5 +14,6 @@ export {
     Pays,
     Swipers,
     Catalogs,
-    Goods
+    Goods,
+    Sign
 }
