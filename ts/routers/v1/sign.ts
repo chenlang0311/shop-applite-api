@@ -4,7 +4,7 @@ import { Sign } from '../../controllers';
 const r = Router();
 const router = new routerHandler(r).handler;
 
-router.get('/today', Sign.findSignList);
+router.get('/today', Sign.today);
 router.get('/list', Sign.findSignList);
 
 export default r;

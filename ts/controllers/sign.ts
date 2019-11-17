@@ -1,10 +1,10 @@
 import { Request, Response, NextFunction } from 'express';
-import { SwipersDao } from '../dao';
+import { SignDao } from '../dao';
 import * as rediscache from '../lib/rediscache';
 import * as utils from '../lib/utils';
 import { config } from '../config/config';
 
-export async function findSwiperList(req: Request, res: Response, next: NextFunction) {
+export async function findSignList(req: Request, res: Response, next: NextFunction) {
     let { category } = req.query;
     if (!category) category = 'home';
 
@@ -21,7 +21,7 @@ export async function findSwiperList(req: Request, res: Response, next: NextFunc
         order: [['level', 'desc']]
     }
 
-    let results = await SwipersDao.getInstance().findSwiperList(opts);
+    let results = await SignDao.getInstance().findSignList(opts);
     if (!results) return res.sendErr('获取图片异常');
 
     results.map(item => {
