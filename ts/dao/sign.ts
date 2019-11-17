@@ -4,7 +4,7 @@ import { DaoBase, SeqzDao } from './base';
 
 class Dao extends DaoBase {
     private static instance: Dao;
-    private static tableName: string = 'swipers';
+    private static tableName: string = 'sign';
 
     public constructor(seqz: Sequelize, modelName: string) {
         super(seqz, modelName);
@@ -20,7 +20,7 @@ class Dao extends DaoBase {
         return res ? res.get() : undefined;
     }
 
-    public async findSwiperList(opts: any) {
+    public async findSignList(opts: any) {
         let res = await this.model().findAll(opts);
         return res ? res.map(r => r.get()) : undefined;
     }

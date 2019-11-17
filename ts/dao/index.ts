@@ -70,5 +70,6 @@ export {
     RecordsDao,
     SwipersDao,
     OrdersDao,
-    GoodsDao
+    GoodsDao,
+    SignDao
 }
