@@ -6,6 +6,7 @@ import catalogsRouterV1 from './v1/catalogs';
 import paysRouterV1 from './v1/pays';
 import swipersRouterV1 from './v1/swipers';
 import goodsRouterV1 from './v1/goods';
+import signsRouterV1 from './v1/sign';
 
 export function routers(app: Application) {
 	app.use('/api/v1/users', usersRouterV1);
@@ -15,4 +16,6 @@ export function routers(app: Application) {
 	app.use('/api/v1/pays', paysRouterV1);
 	app.use('/api/v1/swipers', swipersRouterV1);
 	app.use('/api/v1/goods', goodsRouterV1);
+	app.use('/api/v1/sign', signsRouterV1);
+	
 }
