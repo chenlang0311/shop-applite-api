@@ -111,3 +111,8 @@ export async function findGoodsDetail(req: Request, res: Response, next: NextFun
     results.locked = locked;
     return res.sendOk(results);
 }
+
+
+export async function exchangeGoods(req: Request, res: Response, next: NextFunction ){
+    //兑换商品
+}
