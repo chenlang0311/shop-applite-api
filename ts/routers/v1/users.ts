@@ -12,5 +12,5 @@ router.post('/setinfo', checkLogin, Users.setUserInfo); // 设置用户信息
 router.get('/userinfo', checkLogin, Users.getUserInfo); // 获取用户信息
 router.get('/classes', checkLogin, Users.findUserClassList); // 我的课程
 router.post('/dailysign', checkLogin, Users.dailySign); // 日常签到
-router.post('/exchange-goods', checkLogin, Users.exchangeGoods); // 兑换商品
+// router.post('/exchange-goods', checkLogin, Users.exchangeGoods); // 兑换商品
 export default r;
