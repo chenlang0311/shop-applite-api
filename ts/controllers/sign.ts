@@ -5,31 +5,18 @@ import * as utils from '../lib/utils';
 import { config } from '../config/config';
 
 export async function findSignList(req: Request, res: Response, next: NextFunction) {
-    let { category } = req.query;
-    if (!category) category = 'home';
-
-    let redisKey = { category }
-    let redis_results = await rediscache.getRedisCacheAboutReq(req, redisKey);
-    if (redis_results && typeof redis_results === 'object') return res.sendOk(redis_results);
-
+    let { date } = req.query;
+    if (!date) date = Date.now();
     let opts = {
-        limit: 6,
+        limit: 10,
         where: {
             state: 'normal',
-            category: category
+            date: date
         },
         order: [['level', 'desc']]
     }
-
     let results = await SignDao.getInstance().findSignList(opts);
-    if (!results) return res.sendErr('获取图片异常');
-
-    results.map(item => {
-        if (item.pic) item.pic = utils.picReplaceUrl(item.pic, config.imageHost);
-        return item;
-    });
-
-    rediscache.setRedisCacheAboutReq(req, redisKey, results);
+    if (!results) return res.sendErr('获取签到记录异常');
     return res.sendOk(results);
 }
 
