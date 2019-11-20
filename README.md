@@ -30,3 +30,9 @@ service start sucess and listening on port 8010...
 在ts/config/winston.ts中配置日志信息
 ## 修改配置
 在ts/config/config.ts可以修改MySQL，Redis等配置，修改配置后需要重新启动服务
+
+### 接口思路
+用户->注册->登录
+商品->列表->详情
+签到->每日->列表
+奖品->列表->单个
