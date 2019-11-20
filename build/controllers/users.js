@@ -237,52 +237,5 @@ async function dailySign(req, res, next) {
 }
 exports.dailySign = dailySign;
 //兑换
-async function exchangeGoods(req, res, next) {
-    let user_id = req.jwtAccessToken ? req.jwtAccessToken.sub : null;
-    if (!user_id)
-        return res.sendErr('用户过期');
-    let { userInfoKey, userInfoExpire } = config_1.config.redisCache;
-    let user = await rediscache.getRedisCache(user_id, userInfoKey); // 检查redis缓存
-    if (!user) {
-        user = await dao_1.UsersDao.getInstance().findByPrimary(user_id);
-        rediscache.setRedisCache(user_id, user, userInfoExpire, userInfoKey); // redis缓存
-    }
-    if (!user)
-        return res.sendErr('不存在的用户');
-    let coin = user.coin;
-    let goods = await dao_1.GoodsDao.getInstance().findByPrimary(1);
-    console.log("goods------", goods);
-    if (!goods)
-        return res.sendErr("未找到商品");
-    let { price, stock, state } = goods;
-    if (state == 'deleted')
-        return res.sendErr("兑换商品已被删除");
-    if (stock <= 0)
-        return res.sendErr("兑换商品库存不足");
-    // 
-    console.log(coin);
-    if (coin - price >= 0) {
-        coin = coin - price;
-        stock = stock - 1;
-        let options = {
-            coin
-        };
-        await rediscache.delRedisCache(user_id, userInfoKey); // 需要更新记录时，先清除缓存
-        let results = await dao_1.UsersDao.getInstance().updateUserInfo(user_id, options);
-        if (!results)
-            return res.sendErr('兑换失败');
-        let goodsOpt = {
-            stock
-        };
-        let goodsRes = await dao_1.GoodsDao.getInstance().updateGoodsInfo(1, goodsOpt);
-        if (!goodsRes)
-            return res.sendErr('商品兑换失败');
-        return res.sendOk('兑换成功');
-    }
-    else {
-        return res.sendErr('兑换币不足，请加油获取！');
-    }
-}
-exports.exchangeGoods = exchangeGoods;
 
 //# sourceMappingURL=../maps/controllers/users.js.map

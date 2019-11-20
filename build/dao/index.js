@@ -22,6 +22,8 @@ const orders_1 = require("./orders");
 exports.OrdersDao = orders_1.OrdersDao;
 const goods_1 = require("./goods");
 exports.GoodsDao = goods_1.GoodsDao;
+const sign_1 = require("./sign");
+exports.SignDao = sign_1.SignDao;
 function initInstance() {
     const seqz = base_1.SeqzDao.getInstance();
     /** init instance */
@@ -30,6 +32,7 @@ function initInstance() {
     categories_1.CategoriesDao.getInstance(seqz);
     classes_1.ClassesDao.getInstance(seqz);
     goods_1.GoodsDao.getInstance(seqz);
+    sign_1.SignDao.getInstance(seqz);
     details_1.DetailsDao.getInstance(seqz);
     pay_logs_1.PayLogsDao.getInstance(seqz);
     records_1.RecordsDao.getInstance(seqz);
@@ -51,6 +54,7 @@ function initDao() {
     seqz.import('../models/swipers');
     seqz.import('../models/orders');
     seqz.import('../models/goods');
+    seqz.import('../models/sign');
     Classes.hasMany(Catalogs, { foreignKey: 'class_id', as: 'catalogs' });
     Classes.hasOne(Details, { foreignKey: 'class_id', as: 'details' });
     Records.belongsTo(Classes, { foreignKey: 'class_id', as: 'classes' });

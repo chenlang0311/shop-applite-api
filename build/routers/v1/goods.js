@@ -6,8 +6,9 @@ const routerbase_1 = require("../../lib/routerbase");
 const controllers_1 = require("../../controllers");
 const r = express_1.Router();
 const router = new routerbase_1.routerHandler(r).handler;
-router.get('/list', controllers_1.Goods.findClassList); // 课程列表
-router.get('/details/:id', controllers_1.Goods.findClassDetails); // 课程详情
+router.get('/exchange', controllers_1.Goods.exchangeGoods); // 兑换商品
+router.get('/list', controllers_1.Goods.findGoodsList); // 课程列表
+router.get('/details/:id', controllers_1.Goods.findGoodsDetail); // 课程详情
 exports.default = r;
 
 //# sourceMappingURL=../../maps/routers/v1/goods.js.map

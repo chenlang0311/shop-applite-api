@@ -5,8 +5,8 @@ const dao_1 = require("../dao");
 const wxutils = require("../lib/wxutils");
 const config_1 = require("../config/config");
 const rediscache = require("../lib/rediscache");
-async function findClassList(req, res, next) {
-    return res.sendOk();
+async function findGoodsList(req, res, next) {
+    // return res.sendOk()
     let { page, count, category_id, order_by, order_sort, search } = req.query;
     let { offset, limit } = utils.getPageCount(page, count);
     let redisKey = { offset, limit, category_id, order_by, order_sort, search };
@@ -23,20 +23,18 @@ async function findClassList(req, res, next) {
         },
         order: [['unlocks', 'desc']]
     };
-    if (category_id && category_id != '0')
-        options.where.category_id = category_id;
-    if (order_by && order_sort)
-        options.order = [[`${order_by}`, `${order_sort}`]];
-    if (search && search !== '') {
-        search = utils.trim(search);
-        options.where.$or = [
-            { title: { $like: `%${search}%` } },
-            { abstract: { $like: `%${search}%` } },
-            { author: { $like: `%${search}%` } },
-            { author_abstract: { $like: `%${search}%` } }
-        ];
-    }
-    let results = await dao_1.ClassesDao.getInstance().findClassList(options);
+    // if (category_id && category_id != '0') options.where.category_id = category_id;
+    // if (order_by && order_sort) options.order = [[`${order_by}`, `${order_sort}`]];
+    // if (search && search !== '') {
+    //     search = utils.trim(search);
+    //     options.where.$or = [
+    //         { title: { $like: `%${search}%` } },
+    //         { abstract: { $like: `%${search}%` } },
+    //         { author: { $like: `%${search}%` } },
+    //         { author_abstract: { $like: `%${search}%` } }
+    //     ];
+    // }
+    let results = await dao_1.GoodsDao.getInstance().findGoodsList(options);
     if (!results)
         return res.sendErr('获取列表失败！');
     let data = results.rows.map(r => {
@@ -62,9 +60,9 @@ async function findClassList(req, res, next) {
     rediscache.setRedisCacheAboutReq(req, redisKey, { count: results.count, rows: data });
     return res.sendOk(data);
 }
-exports.findClassList = findClassList;
-async function findClassDetails(req, res, next) {
-    return res.sendOk();
+exports.findGoodsList = findGoodsList;
+async function findGoodsDetail(req, res, next) {
+    // return res.sendOk()
     let locked = true;
     let { id } = req.params;
     let user_id = req.jwtAccessToken ? req.jwtAccessToken.sub : null;
@@ -73,7 +71,7 @@ async function findClassDetails(req, res, next) {
         if (record)
             locked = false;
     }
-    let results = await dao_1.ClassesDao.getInstance().findClassDetails(id);
+    let results = await dao_1.GoodsDao.getInstance().findGoodsDetail(id);
     if (!results)
         return res.sendErr('获取详情失败');
     if (results.state !== 'normal')
@@ -114,6 +112,53 @@ async function findClassDetails(req, res, next) {
     results.locked = locked;
     return res.sendOk(results);
 }
-exports.findClassDetails = findClassDetails;
+exports.findGoodsDetail = findGoodsDetail;
+async function exchangeGoods(req, res, next) {
+    let user_id = req.jwtAccessToken ? req.jwtAccessToken.sub : null;
+    if (!user_id)
+        return res.sendErr('用户过期');
+    let { userInfoKey, userInfoExpire } = config_1.config.redisCache;
+    let user = await rediscache.getRedisCache(user_id, userInfoKey); // 检查redis缓存
+    if (!user) {
+        user = await dao_1.UsersDao.getInstance().findByPrimary(user_id);
+        rediscache.setRedisCache(user_id, user, userInfoExpire, userInfoKey); // redis缓存
+    }
+    if (!user)
+        return res.sendErr('不存在的用户');
+    let coin = user.coin;
+    let goods = await dao_1.GoodsDao.getInstance().findByPrimary(1);
+    console.log("goods------", goods);
+    if (!goods)
+        return res.sendErr("未找到商品");
+    let { price, stock, state } = goods;
+    if (state == 'deleted')
+        return res.sendErr("兑换商品已被删除");
+    if (stock <= 0)
+        return res.sendErr("兑换商品库存不足");
+    // 
+    console.log(coin);
+    if (coin - price >= 0) {
+        coin = coin - price;
+        stock = stock - 1;
+        let options = {
+            coin
+        };
+        await rediscache.delRedisCache(user_id, userInfoKey); // 需要更新记录时，先清除缓存
+        let results = await dao_1.UsersDao.getInstance().updateUserInfo(user_id, options);
+        if (!results)
+            return res.sendErr('兑换失败');
+        let goodsOpt = {
+            stock
+        };
+        let goodsRes = await dao_1.GoodsDao.getInstance().updateGoodsInfo(1, goodsOpt);
+        if (!goodsRes)
+            return res.sendErr('商品兑换失败');
+        return res.sendOk('兑换成功');
+    }
+    else {
+        return res.sendErr('兑换币不足，请加油获取！');
+    }
+}
+exports.exchangeGoods = exchangeGoods;
 
 //# sourceMappingURL=../maps/controllers/goods.js.map

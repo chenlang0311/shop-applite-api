@@ -7,6 +7,7 @@ const catalogs_1 = require("./v1/catalogs");
 const pays_1 = require("./v1/pays");
 const swipers_1 = require("./v1/swipers");
 const goods_1 = require("./v1/goods");
+const sign_1 = require("./v1/sign");
 function routers(app) {
     app.use('/api/v1/users', users_1.default);
     app.use('/api/v1/classes', classes_1.default);
@@ -15,6 +16,7 @@ function routers(app) {
     app.use('/api/v1/pays', pays_1.default);
     app.use('/api/v1/swipers', swipers_1.default);
     app.use('/api/v1/goods', goods_1.default);
+    app.use('/api/v1/sign', sign_1.default);
 }
 exports.routers = routers;
 
