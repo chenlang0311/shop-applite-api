@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import * as utils from '../lib/utils';
-import { RecordsDao,ClassesDao,GoodsDao,UsersDao } from '../dao';
+import { RecordsDao,GoodsDao,UsersDao } from '../dao';
 import * as wxutils from '../lib/wxutils';
 import { config } from '../config/config';
 import * as rediscache from '../lib/rediscache';
