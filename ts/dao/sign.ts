@@ -28,8 +28,11 @@ class Dao extends DaoBase {
         return res ? res.get() : undefined;
     }
     public async findByDate(user_id: string | number,start_time:string, end_time: string){
-        let opts: any = { where: { user_id: user_id } };
-        opts.include = [{ start_time: start_time, end_time: end_time }];
+        let opts: any = { where: { 
+            user_id: user_id ,
+            start_time: start_time, end_time: end_time
+         } 
+        };
         let res = await this.model().count(opts);
         return (res || res === 0) ? res : undefined;
     }
