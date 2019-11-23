@@ -6,14 +6,14 @@ import { config } from '../config/config';
 
 export async function findSignList(req: Request, res: Response, next: NextFunction) {
     let { date } = req.query;
-    if (!date) date = Date.now();
+    if (!date) date = utils.momentFmt(Date.now(), 'YYYY-MM-DD');
+    return res.sendOk(date);
     let opts = {
         limit: 10,
         where: {
-            state: 'normal',
             date: date
         },
-        order: [['level', 'desc']]
+        order: [['desc']]
     }
     let results = await SignDao.getInstance().findSignList(opts);
     if (!results) return res.sendErr('获取签到记录异常');

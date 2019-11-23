@@ -44,7 +44,7 @@ const development = {
     mysql: {
         database: 'classroom',
         username: 'root',
-        password: '123456',
+        password: '',
         options: {
             dialect: 'mysql',
             host: 'localhost',
