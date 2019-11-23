@@ -5,17 +5,11 @@ import * as utils from '../lib/utils';
 import { config } from '../config/config';
 
 export async function findSignList(req: Request, res: Response, next: NextFunction) {
-    let { date } = req.query;
-    if (!date) date = utils.momentFmt(Date.now(), 'YYYY-MM-DD');
-    return res.sendOk(date);
-    let opts = {
-        limit: 10,
-        where: {
-            date: date
-        },
-        order: [['desc']]
-    }
-    let results = await SignDao.getInstance().findSignList(opts);
+    let { start_time, end_time} = req.query;
+    // if (!date) date = utils.momentFmt(Date.now(), 'YYYY-MM-DD');
+    let user_id = req.jwtAccessToken ? req.jwtAccessToken.sub : null;
+    // return res.sendOk(date);
+    let results = await SignDao.getInstance().findByDate(user_id,start_time,end_time);
     if (!results) return res.sendErr('获取签到记录异常');
     return res.sendOk(results);
 }
