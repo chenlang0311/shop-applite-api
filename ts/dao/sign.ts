@@ -27,14 +27,14 @@ class Dao extends DaoBase {
         let res = await this.model().findByPrimary(id);
         return res ? res.get() : undefined;
     }
-    public async findByDate(user_id: string | number,start_time:string, end_time: string){
+    public async findByDate(user_id: string | number){
         let opts: any = { where: { 
-            user_id: user_id ,
-            start_time: start_time, end_time: end_time
+            user_id: user_id 
          } 
         };
-        let res = await this.model().count(opts);
-        return (res || res === 0) ? res : undefined;
+        let count = await this.model().count(opts);
+        let res = await this.model().findAll(opts);
+        return res ? { count: count, rows: res } : undefined;
     }
     public async findByUnique(user_id: string | number, class_id: string | number) {
         let res = await this.model().findOne({ where: { user_id: user_id, class_id: class_id } });

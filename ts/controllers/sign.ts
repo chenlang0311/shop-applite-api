@@ -6,13 +6,20 @@ import { config } from '../config/config';
 
 export async function findSignList(req: Request, res: Response, next: NextFunction) {
     let { start_time, end_time} = req.query;
-    if (!end_time) end_time = utils.momentFmt(Date.now(), 'YYYY-MM-DD');
+    if (!end_time) end_time = Date.now();
     let user_id = req.jwtAccessToken ? req.jwtAccessToken.sub : null;
     if (!user_id) return res.sendErr('用户过期');
     // return res.sendOk(date);
-    let results = await SignDao.getInstance().findByDate(user_id,start_time,end_time);
-    if (!results) return res.sendErr('获取签到记录异常');
-    return res.sendOk(results);
+    let results = await SignDao.getInstance().findByDate(user_id);
+    if (!results) return res.sendErr('暂无签到记录');
+    let data = results.rows.map(r => {
+        let item = r.get();
+        let keyTime = new Date(item.created).getTime();
+        if(keyTime>=start_time&&keyTime<=end_time){
+            return item
+        }
+    })
+    return res.sendOk(data);
 }
 
 
