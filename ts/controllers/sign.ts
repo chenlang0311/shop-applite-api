@@ -48,6 +48,8 @@ export async function today(req: Request, res: Response, next: NextFunction) {
         await rediscache.delRedisCache(user_id, userInfoKey); // 需要更新记录时，先清除缓存
         let results = await UsersDao.getInstance().updateUserInfo(user_id, options);
         if (!results) return res.sendErr('签到失败');
+        // 需要插入到签到记录表
+        // TODO
         let data = {
             msg: "签到成功",
             coin: coin
