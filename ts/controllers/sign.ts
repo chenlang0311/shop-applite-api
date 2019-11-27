@@ -3,28 +3,26 @@ import { SignDao, UsersDao } from '../dao';
 import * as rediscache from '../lib/rediscache';
 import * as utils from '../lib/utils';
 import { config } from '../config/config';
-
+/**
+ * 主要参数 start_time 开始时间
+ */
 export async function findSignList(req: Request, res: Response, next: NextFunction) {
     let { start_time, end_time} = req.query;
-    if (!end_time) end_time = Date.now();
+    if (!end_time) end_time =utils.momentFmt(Date.now(),"YYYY-MM-DD") ;
     let user_id = req.jwtAccessToken ? req.jwtAccessToken.sub : null;
     if (!user_id) return res.sendErr('用户过期');
-    // return res.sendOk(date);
     let results = await SignDao.getInstance().findByDate(user_id,start_time,end_time);
     if (!results) return res.sendErr('暂无签到记录');
-    // let data = results.rows.map(r => {
-    //     let item = r.get();
-    //     let keyTime = new Date(item.created).getTime();
-    //     if(keyTime>=start_time&&keyTime<=end_time){
-    //         return item
-    //     }
-    // })
     return res.sendOk(results);
 }
 
-
-export async function today(req: Request, res: Response, next: NextFunction) {
-    
+/**
+ * 今日签到
+ * @param req 
+ * @param res 
+ * @param next 
+ */
+export async function today(req: Request, res: Response, next: NextFunction) { 
     let user_id = req.jwtAccessToken ? req.jwtAccessToken.sub : null;
     if (!user_id) return res.sendErr('用户过期');
     let { userInfoKey, userInfoExpire } = config.redisCache;
@@ -42,7 +40,6 @@ export async function today(req: Request, res: Response, next: NextFunction) {
     } else {
         sign_date = today;
         let coin = user.coin;
-        console.log('coin-----', coin)
         coin = coin + 2;
         let options = {
             sign_date,
