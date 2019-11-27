@@ -27,10 +27,15 @@ class Dao extends DaoBase {
         let res = await this.model().findByPrimary(id);
         return res ? res.get() : undefined;
     }
-    public async findByDate(user_id: string | number){
-        let opts: any = { where: { 
-            user_id: user_id 
-         } 
+    public async findByDate(user_id: string | number, start_time: string, end_time: string) {
+        let opts: any = {
+            where: {
+                user_id: user_id,
+                created: {
+                    $between: [start_time, end_time]
+                }
+
+            }
         };
         let count = await this.model().count(opts);
         let res = await this.model().findAll(opts);

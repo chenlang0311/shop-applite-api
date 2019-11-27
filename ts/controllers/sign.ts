@@ -10,16 +10,16 @@ export async function findSignList(req: Request, res: Response, next: NextFuncti
     let user_id = req.jwtAccessToken ? req.jwtAccessToken.sub : null;
     if (!user_id) return res.sendErr('用户过期');
     // return res.sendOk(date);
-    let results = await SignDao.getInstance().findByDate(user_id);
+    let results = await SignDao.getInstance().findByDate(user_id,start_time,end_time);
     if (!results) return res.sendErr('暂无签到记录');
-    let data = results.rows.map(r => {
-        let item = r.get();
-        let keyTime = new Date(item.created).getTime();
-        if(keyTime>=start_time&&keyTime<=end_time){
-            return item
-        }
-    })
-    return res.sendOk(data);
+    // let data = results.rows.map(r => {
+    //     let item = r.get();
+    //     let keyTime = new Date(item.created).getTime();
+    //     if(keyTime>=start_time&&keyTime<=end_time){
+    //         return item
+    //     }
+    // })
+    return res.sendOk(results);
 }
 
 
