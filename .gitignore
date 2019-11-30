@@ -21,6 +21,7 @@ tmp
 
 # Dependency directory
 */node_modules
+*/build
 # Editors
 .idea
 *.iml
