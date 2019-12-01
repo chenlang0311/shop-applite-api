@@ -6,6 +6,7 @@ services:
 
 before_install:
   - npm install
+  - gulp
 script:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - docker build -t 1025518502/shop-applite-api:latest .
