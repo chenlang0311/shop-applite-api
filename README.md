@@ -28,6 +28,7 @@ service start sucess and listening on port 8010...
 ## 配置
 在ts/config/config.ts中配置MySQL，Redis,项目端口号，JWT等等
 在ts/config/winston.ts中配置日志信息
+导入项目根目录下的mysql.sql
 ## 修改配置
 在ts/config/config.ts可以修改MySQL，Redis等配置，修改配置后需要重新启动服务
 
@@ -37,6 +38,14 @@ service start sucess and listening on port 8010...
 签到->每日1->列表1
 奖品->列表->单个->领奖->实物->地址->领取
                      ->虚拟->领取
+
+
+### 功能列表
++ 首页
++ 商品详情页面，商品兑换
++ 完整的购物流程，商品的加入、编辑、删除、批量选择，收货地址的选择，下单支付
++ 会员中心（订单、收藏、足迹、收货地址、意见反馈）
+....
 
 ### 思考
 前端来写后端，一开始还是有非常大的困难的，第一步要去考虑数据库的设计，然后要sql语句的设计，然后对数据的清洗，最后才是对响应数据的返回。困难还是有的，一步步来，相信路总会走下去。
