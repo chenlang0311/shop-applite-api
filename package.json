@@ -13,7 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.2",
-    "body-parser-xml": "^1.1.0",
+    "body-parser-xml": "^2.0.3",
     "compression": "^1.7.2",
     "express": "^4.16.2",
     "express-session": "^1.15.6",
